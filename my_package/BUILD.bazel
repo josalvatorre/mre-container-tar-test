@@ -1,0 +1,31 @@
+load("@container_structure_test//:defs.bzl", "container_structure_test")
+load("@rules_oci//oci:defs.bzl", "oci_image")
+load("@rules_oci//oci:defs.bzl", "oci_tarball")
+load("@rules_pkg//pkg:pkg.bzl", "pkg_tar")
+
+ubuntu_user_and_group = "ubuntu:ubuntu"
+
+pkg_tar(
+    name="empty_file_tar",
+    srcs=["empty-file.txt"],
+)
+
+oci_image(
+    name="empty_file_layer",
+    base="@ubuntu_base",
+    tars=[":empty_file_tar"],
+    user=ubuntu_user_and_group,
+)
+
+oci_tarball(
+    name="empty_file_image_tarball",
+    image=":empty_file_layer",
+    repo_tags="empty-file-repo-tags.txt",
+)
+
+container_structure_test(
+    name="empty_file_image_test",
+    configs=["empty-file-test.yaml"],
+    image=":empty_file_image_tarball",
+    driver="tar",
+)

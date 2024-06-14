@@ -1,0 +1,8 @@
+fileExistenceTests:
+- name: 'empty-file-is-present'
+  path: '/empty-file.txt'
+  shouldExist: true
+  permissions: '-r-xr--r--'
+  uid: 1000
+  gid: 1000
+  isExecutableBy: 'owner'

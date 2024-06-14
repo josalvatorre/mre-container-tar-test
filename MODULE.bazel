@@ -1,0 +1,14 @@
+bazel_dep(name = "container_structure_test", version = "1.16.0")
+bazel_dep(name = "rules_oci", version = "2.0.0-alpha3")
+bazel_dep(name="rules_pkg", version="0.10.1")
+
+oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
+
+ubuntu_base_name = "ubuntu_base"
+oci.pull(
+    name=ubuntu_base_name,
+    image="docker.io/library/ubuntu",
+    digest="sha256:3f85b7caad41a95462cf5b787d8a04604c8262cdcdf9a472b8c52ef83375fe15",
+    platforms=["linux/arm64/v8"],
+)
+use_repo(oci, ubuntu_base_name)

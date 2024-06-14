@@ -1,0 +1,3 @@
+bazel-*
+blobs/
+manifest.json
