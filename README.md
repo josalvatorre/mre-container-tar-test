@@ -11,16 +11,14 @@ I'm either doing something wrong or they only work because of the version differ
 
 ## High-level description of what I'm trying to do
 
->[We recommend container_structure_test to run tests against an oci_image target (with driver="docker")
-or an oci_tarball target (with driver="tar").][4]
-
 I want to build container images using Bazel.
 The recommended Bazel rules for this use case is [Aspect's `rules_oci`](https://github.com/bazel-contrib/rules_oci).
 `rules_oci` mostly provides a way to *build* the images (which I can do successfully),
 but the project recommends using [`container_structure_test`][4] to test the image structure.
 
->We recommend container_structure_test to run tests against an `oci_image` target
-(with `driver="docker"`) or an `oci_tarball` target (with `driver="tar"`).
+>[We recommend container_structure_test to run tests against an oci_image target (with driver="docker")
+or an oci_tarball target (with driver="tar").][4]
+
 
 I'm reluctant to test against the `oci_image` output because it's not the final artifact.
 As far as I understand, you always have to use `oci_tarball` to generate the final artifact,
