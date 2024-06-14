@@ -8,6 +8,8 @@ ubuntu_user_and_group = "ubuntu:ubuntu"
 pkg_tar(
     name="empty_file_tar",
     srcs=["empty-file.txt"],
+    # TODO This is hacky. We should centralize user and group owners.
+    owner="1000.1000",
 )
 
 oci_image(
@@ -17,6 +19,12 @@ oci_image(
     user=ubuntu_user_and_group,
 )
 
+container_structure_test(
+    name="empty_file_layer_test",
+    configs=["empty-file-test.yaml"],
+    image=":empty_file_layer",
+)
+
 oci_tarball(
     name="empty_file_image_tarball",
     image=":empty_file_layer",
@@ -24,7 +32,7 @@ oci_tarball(
 )
 
 container_structure_test(
-    name="empty_file_image_test",
+    name="empty_file_image_tarball_test",
     configs=["empty-file-test.yaml"],
     image=":empty_file_image_tarball",
     driver="tar",

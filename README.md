@@ -59,18 +59,18 @@ Change: 2024-06-14 02:55:51.692770004 +0000
 
 ### Fail to run the test.
 
-Running `bazel test //my_package:empty_file_image_test` should fail to run the test.
+Running `bazel test //my_package:empty_file_image_tarball_test` should fail to run the test.
 Bazel should complain that the tarball doesn't end in `.tar`.
 
 ```
-➜  mre-container-tar-test git:(main) ✗ bazel test //my_package:empty_file_image_test
-ERROR: /Users/josalvatorre/code/mre-container-tar-test/my_package/BUILD.bazel:26:25: in container_structure_test rule //my_package:empty_file_image_test:
+➜  mre-container-tar-test git:(main) ✗ bazel test //my_package:empty_file_image_tarball_test
+ERROR: /Users/josalvatorre/code/mre-container-tar-test/my_package/BUILD.bazel:26:25: in container_structure_test rule //my_package:empty_file_image_tarball_test:
 Traceback (most recent call last):
 	File "/private/var/tmp/_bazel_josalvatorre/bb1e2552732b81b1b69870fcd931a2e6/external/container_structure_test~/bazel/container_structure_test.bzl", line 55, column 17, in _structure_test_impl
 		fail("when the 'driver' attribute is not 'docker', then the image must be a .tar file")
 Error in fail: when the 'driver' attribute is not 'docker', then the image must be a .tar file
-ERROR: /Users/josalvatorre/code/mre-container-tar-test/my_package/BUILD.bazel:26:25: Analysis of target '//my_package:empty_file_image_test' failed
-ERROR: Analysis of target '//my_package:empty_file_image_test' failed; build aborted
+ERROR: /Users/josalvatorre/code/mre-container-tar-test/my_package/BUILD.bazel:26:25: Analysis of target '//my_package:empty_file_image_tarball_test' failed
+ERROR: Analysis of target '//my_package:empty_file_image_tarball_test' failed; build aborted
 INFO: Elapsed time: 0.079s, Critical Path: 0.00s
 INFO: 1 process: 1 internal.
 ERROR: Build did NOT complete successfully
