@@ -3,6 +3,12 @@
 This is an MRE for an issue I ran into recently. I originally posted on [StackOverflow][1],
 but that didn't get any traction, possibly because my example was too complicated.
 
+I found examples online that use older versions of the OCI rules.
+I'm either doing something wrong or they only work because of the version difference.
+
+* [privacysandbox/protected-auction-key-value-service][5]
+* [stewartbutler/rules_debian_packages][6]
+
 ## High-level description of what I'm trying to do
 
 >[We recommend container_structure_test to run tests against an oci_image target (with driver="docker")
@@ -101,3 +107,5 @@ ERROR: No test targets were found, yet testing was requested
 [2]: https://github.com/bazelbuild/bazelisk
 [3]: https://docs.docker.com/manuals/
 [4]: https://github.com/bazel-contrib/rules_oci/blob/3d43cb1a1bb2f5edc15c7f48b406be3fb225e673/README.md?plain=1#L95-L97
+[5]: https://github.com/privacysandbox/protected-auction-key-value-service/blob/9a60180f9d6f52a4ca805e5463ecc9e5e80e88f9/production/packaging/aws/data_server/BUILD.bazel#L120-L132
+[6]: https://github.com/stewartbutler/rules_debian_packages/blob/a7931ba880bad577a43b8274c12fcf30b7e14886/e2e/smoke/BUILD.bazel#L52-L63
