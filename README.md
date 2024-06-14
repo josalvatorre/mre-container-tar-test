@@ -57,6 +57,26 @@ Change: 2024-06-14 02:55:51.692770004 +0000
  Birth: 2024-06-14 02:55:51.692770004 +0000
 ```
 
+### Successfully run the non-tarball image test
+
+Running against the intermediary image is fine.
+We can see this by running `bazel test //my_package:empty_file_layer_test`.
+
+```
+➜  mre-container-tar-test git:(main) ✗ bazel test //my_package:empty_file_layer_test
+INFO: Analyzed target //my_package:empty_file_layer_test (1 packages loaded, 5 targets configured).
+INFO: Found 1 test target...
+Target //my_package:empty_file_layer_test up-to-date:
+  bazel-bin/my_package/empty_file_layer_test.sh
+INFO: Elapsed time: 0.817s, Critical Path: 0.73s
+INFO: 5 processes: 5 darwin-sandbox.
+INFO: Build completed successfully, 5 total actions
+//my_package:empty_file_layer_test                                       PASSED in 0.4s
+
+Executed 1 out of 1 test: 1 test passes.
+There were tests whose specified size is too big. Use the --test_verbose_timeout_warnings command line option to see which ones these are.
+```
+
 ### Fail to run the test.
 
 Running `bazel test //my_package:empty_file_image_tarball_test` should fail to run the test.
